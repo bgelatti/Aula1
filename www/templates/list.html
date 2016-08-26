@@ -1,0 +1,23 @@
+<ion-view view-title="Bloco de Notas" ng-controller="listaControle">
+  <ion-content>
+    <ion-list show-reorder="reordering">
+      <ion-item class="item-remove-animate item-icon-right"
+        href="#/editar/{{note.id}}"
+        ng-repeat="note in notes track by note.id">
+        <h2>{{note.titulo}}</h2>
+        <p>{{note.descricao}}</p>
+        <i class="icon ion-arrow-right-b"></i>
+        <ion-reorder-button class="ion-drag"
+          on-reorder="move(note, $fromIndex, $toIndex)"></ion-reorder-button>
+        <ion-option-button class="button-assertive icon-left ion-trash-b"
+          ng-click="remove(note.id)">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <div class="bar bar-footer bar-stable">
+    <a href="#/novo"
+      class="button button-assertive icon-left ion-compose">Nova Nota</a>
+    <button class="button button-light icon-left ion-shuffle"
+      ng-click="toggleReordering()">Reordenar</button>
+  </div>
+</ion-view>
